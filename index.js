@@ -70,14 +70,14 @@ Deposit spender: 0xa9feabf9f8c3ee41eaa8cfdc6bc8960ffb837ef5 (recovered from ECDS
     callValue: txDesc.value,
     rawParameter: txDesc.data.slice(10), // TODO: cut off selector
   };
-  const txObject = tronWeb.transactionBuilder.triggerSmartContract(
+  const txObject = await tronWeb.transactionBuilder.triggerSmartContract(
     txDesc.to,
-    txDesc.func,
+    METHOD,
     options,
     []
   );
   const signedTx = await tronWeb.trx.sign(txObject.transaction, pk);
-  const res = await this.tronWeb.trx.sendRawTransaction(signedTx);
+  const res = await tronWeb.trx.sendRawTransaction(signedTx);
   return res;
 }
 
