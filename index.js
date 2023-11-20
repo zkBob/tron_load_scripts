@@ -88,13 +88,13 @@ function main() {
 
       tronWeb.setHeader({"TRON-PRO-API-KEY": '457a8d31-e0dd-4ea6-9af0-69cb00a3763e'});
       const pk = process.env.PK;
-      const batchCouunt = process.env.BATCHNUM;
-      const batchCouunt = process.env.BATCH_TIMEOUT;
+      const batchCount = process.env.BATCHNUM;
+      const batchTimeout = process.env.BATCH_TIMEOUT;
       const callerAddress = tronWeb.address.fromPrivateKey(pk);
       console.log("caller", callerAddress)
       // Workaround for https://github.com/tronprotocol/tronweb/issues/90
       tronWeb.setAddress(callerAddress);
-    for(let batch=0; batch<batchCouunt; batch++) {
+    for(let batch=0; batch<batchCount; batch++) {
         setTimeout(async () => {
             let promises = [];
             console.log("start batch ",batch, Date.now()/1000 );
