@@ -91,6 +91,7 @@ function main() {
       const batchCount = process.env.BATCHNUM;
       const batchTimeout = process.env.BATCH_TIMEOUT;
       const callerAddress = tronWeb.address.fromPrivateKey(pk);
+      const batchSize = process.env.BATCH_SIZE;
       console.log("caller", callerAddress)
       // Workaround for https://github.com/tronprotocol/tronweb/issues/90
       tronWeb.setAddress(callerAddress);
@@ -99,7 +100,7 @@ function main() {
             let promises = [];
             console.log("start batch ",batch, Date.now()/1000 );
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 3; i++) {
                 promises.push(sendTx(tronWeb,pk))
               }
               Promise.all(promises).then(result => {
