@@ -98,14 +98,15 @@ function main() {
     for(let batch=0; batch<batchCount; batch++) {
         setTimeout(async () => {
             let promises = [];
-            console.log("start batch ",batch, Date.now()/1000 );
+            const batchStart = Date.now();
+            console.log(`batch ${batch} started`);
 
             for (let i = 0; i < 3; i++) {
                 promises.push(sendTx(tronWeb,pk))
               }
               Promise.all(promises).then(result => {
                   writeFileSync(`./results/${Date.now()}_result.json`, JSON.stringify(result));
-                  console.log("end batch ",batch, Date.now() );
+                  console.log(`batch ${batch} processed in ${Date.now() - batchStart} ms` );
               }).catch(err => {
                 console.error("terminated due to error:",err )
               })
