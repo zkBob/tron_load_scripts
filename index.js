@@ -2,7 +2,7 @@ import TronWeb from "tronweb";
 import {writeFileSync} from  "fs";
 async function sendTx(tronWeb,pk) {
   // const POOL_ADDRESS = "TLwZ4pSisGWtvdDpZyVd62kLELyZWV4mwN";
-  const POOL_ADDRESS = "TC85iyvzxktk54xNNUSfzyx8mr8hcZzPaM";
+  const POOL_ADDRESS = "TAnCQk9KNvuvuQgEDXxXjyaU8kRiBJNGxw";
 
   const METHOD = "transact()";
   
@@ -92,7 +92,7 @@ function main() {
       console.log("caller", callerAddress)
       // Workaround for https://github.com/tronprotocol/tronweb/issues/90
       tronWeb.setAddress(callerAddress);
-    for(let batch=0; batch<5000; batch++) {
+    for(let batch=0; batch<1; batch++) {
         setTimeout(async () => {
             let promises = [];
             console.log("start batch ",batch, Date.now()/1000 );
