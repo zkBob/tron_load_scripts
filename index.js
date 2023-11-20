@@ -101,7 +101,7 @@ function main() {
                 promises.push(sendTx(tronWeb,pk))
               }
               Promise.all(promises).then(result => {
-                  writeFileSync(`${Date.now()}_result.json`, JSON.stringify(result));
+                  writeFileSync(`./results/${Date.now()}_result.json`, JSON.stringify(result));
                   console.log("end batch ",batch, Date.now() );
               }).catch(err => {
                 console.error("terminated due to error:",err.statusCode, err.statusMessage )
