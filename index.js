@@ -89,6 +89,7 @@ function main() {
       tronWeb.setHeader({"TRON-PRO-API-KEY": '457a8d31-e0dd-4ea6-9af0-69cb00a3763e'});
       const pk = process.env.PK;
       const batchCouunt = process.env.BATCHNUM;
+      const batchCouunt = process.env.BATCH_TIMEOUT;
       const callerAddress = tronWeb.address.fromPrivateKey(pk);
       console.log("caller", callerAddress)
       // Workaround for https://github.com/tronprotocol/tronweb/issues/90
@@ -105,10 +106,10 @@ function main() {
                   writeFileSync(`./results/${Date.now()}_result.json`, JSON.stringify(result));
                   console.log("end batch ",batch, Date.now() );
               }).catch(err => {
-                console.error("terminated due to error:",err.statusCode, err.statusMessage )
+                console.error("terminated due to error:",err )
               })
               
-            }, 700*batch)
+            }, batchTimeout*batch)
     }
 }
 
